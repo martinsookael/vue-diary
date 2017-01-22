@@ -11,7 +11,7 @@ Model and view are handled by Vue and controller with routing.
 a. in our case, routing is created in collaboration between Crossroads (depending on signals and hasher) and a custom version of Jay (slightly depending on d3).  
 b. in our case, all of the blogging functionality is present in blog Vue object and routing deals with:   
 b.1. Letting Vue know about the current active post.  
-b.2.2 Enables or disables editing functionality (since our blogs one post view, new post add and one post edit are actually in just the same <div>)  
+b.2.2 Enables or disables editing functionality (since our blogs one post view, new post add and one post edit are actually in just the same div)  
 c. We communicate with Vue by directly manipulating the blog.posts array and other properties (title, content, time) of blog object.  
 
 *Reactivity*  
