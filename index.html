@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Minu päevik</title>
+    <title>My diary</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
 
@@ -18,8 +18,8 @@
 
     <!-- Navigation -->
     <div id="navigation">
-      <a href="#"> Sisukord </a>  &nbsp;&nbsp; | &nbsp;&nbsp;
-      <a href="#/add"> Uus postitus </a>
+      <a href="#"> Table of contents </a>  &nbsp;&nbsp; | &nbsp;&nbsp;
+      <a href="#/add"> New entry </a>
     </div>
 
     <!-- App -->
@@ -33,8 +33,19 @@
         </a>
         <p v-if="posts.length === 0">
           <br><br>
-          Selles päevikus ei ole veel ühtegi postitust.<br />
-          Vajuta "Uus postitus", et lisada esimene sissekanne
+          <strong>
+            This diary does not have any entries yet.<br />
+            Click "new entry", to add the first one.
+          </strong>
+        </p>
+        <p>
+          <br /><br />
+          The source code for this diary: <br />
+          <a href="https://github.com/martinsookael/vue-diary" target="_blank">https://github.com/martinsookael/vue-diary</a><br />
+          <br />
+          This diary saves posts using <a target="_blank" href="https://github.com/louischatriot/nedb#browser-version">NeDB browser persistent storage</a>. <br />
+          This means that the posts are not stored to the cloud, but rather to the browser, <br />
+          you are using to access this diary.
         </p>
       </div>
 
@@ -52,10 +63,10 @@
         <textarea id="postContent" placeholder="My thoughts on ..." v-model="content"></textarea>
         <br /><br />
 
-        <a v-if="!isEditing" style="color: #999; text-decoration: none;" v-bind:href="currentEditURL">🖋 Muuda postitust</a><br /><br />
+        <a v-if="!isEditing" style="color: #999; text-decoration: none;" v-bind:href="currentEditURL">🖋 Edit entry</a><br /><br />
 
-        <input v-if="currentPost" id="updatePostButton" type="submit" value="uuenda" @click.prevent="updatePost($event)" >
-        <input v-else id="submitPostButton" type="submit" value="salvesta" @click.prevent="savePost($event)" >
+        <input v-if="currentPost" id="updatePostButton" type="submit" value="update" @click.prevent="updatePost($event)" >
+        <input v-else id="submitPostButton" type="submit" value="save" @click.prevent="savePost($event)" >
         <br /><br />
       </div>
 

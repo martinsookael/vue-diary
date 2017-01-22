@@ -20,12 +20,12 @@ var blog = new Vue({
   el: '#app',               // attached to '#app'
   data: {
     posts: [],              // contains all posts
-    title: '',              // current post title
-    time: '',               // current post time
-    content: '',            // current post content
+    title: '',              // current blog post title
+    time: '',               // current blog post time
+    content: '',            // current blog post content
     currentPost: 0,         // currently viewed / edited post
     currentEditURL: '',     // URL to edit the post
-    isEditing: false        // weather the content can be edited currently
+    isEditing: false        // weather the content can be edited currently, used internaly
   },
   methods: {
     getAllPosts: function (callback) {

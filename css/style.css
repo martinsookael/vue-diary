@@ -56,6 +56,11 @@ p {
   color: #000;
 }
 
+input[disabled],
+textarea[disabled] {
+  background-color: #fff;
+}
+
 #singlePost>input[type="submit"] {
   display: inline;
 }
