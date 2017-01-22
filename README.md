@@ -22,7 +22,16 @@ b. If possible we use the data blog.posts already has - in our case we don't que
 c. If the data is updated we wait until backend confirms the update, then update the Vue object.   
 d. With Vue we do not have to worry about updating the html changes ourselves, since Vue is reactive and updates html itself.  
 
-*Blog functionality:*   
+*Blog functionality:* (in /js/blog.js)   
+
+Blog has the following data elements:  
+posts - contain all posts.    
+title - currently active post title.  
+content - currently active post content.  
+time - currently active post time.   
+currentPost - currently viewed post id.  
+currentEditURL - url to edit the currently viewed post.    
+
 Blog has the following methods:  
 getAllPosts(callback) - If blog.posts is not an empty array, downloads all posts from nedb, otherwise responds with posts.  
 findPost(id, callback) - calls getAllPosts just to make sure data is there and then returns the one post that was looked for.  
@@ -32,7 +41,7 @@ enableEditing() - enabled editing for this post.
 savePost(event) - save new post.  
 updatePost(event) - update currently edited post.   
 
-*Routing:*   
+*Routing:* (in /js/script.js)   
 "/" - displays "#frontPage", and hides other in "#app"  
 "/add" - Add new post -  displays '#singlePost', and hides other in "#app"  
 "/post/{id}" - View one post - displays '#singlePost', and hides other in "#app"  
