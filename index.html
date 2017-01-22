@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Minu päevik</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+
+  <body>
+
+    <div id="alert">
+      <div id="alertMessage"></div>
+      <a href="#" id="closeAlert">
+        X
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <div id="navigation">
+      <a href="#"> Sisukord </a>  &nbsp;&nbsp; | &nbsp;&nbsp;
+      <a href="#/add"> Uus postitus </a>
+    </div>
+
+    <!-- App -->
+    <div id="app">
+
+      <div id="frontPage" class="hidden">
+        <br/><br />
+        <a v-for="post in posts" href="/#/post/{{ post._id }}">
+          {{ post.title }}
+          <br /><br />
+        </a>
+      </div>
+
+      <div id="singlePost" class="hidden" v-bind:class="{ editable: !isEditing }">
+
+        <p style="text-align: right;">
+          &nbsp;{{ time.format('DD. MMMM YYYY') }}<br />
+          <span style="color: #999;">&nbsp;{{ time.format('hh:mm:ss') }}</span>
+        </p>
+
+        <br /><br />
+        <input id="postTitle" type="text" placeholder="Title" v-model="title"><br />
+        <br /><br />
+
+        <textarea id="postContent" placeholder="My thoughts on ..." v-model="content"></textarea>
+        <br /><br />
+
+        <a v-if="!isEditing" style="color: #999; text-decoration: none;" v-bind:href="currentEditURL">🖋 Muuda postitust</a><br /><br />
+
+        <input v-if="currentPost" id="updatePostButton" type="submit" value="uuenda" @click.prevent="updatePost($event)" >
+        <input v-else id="submitPostButton" type="submit" value="salvesta" @click.prevent="savePost($event)" >
+        <br /><br />
+      </div>
+
+      <div id="e404" class="hidden">
+        <h1>404</h1>
+      </div>
+
+    </div>
+
+
+    <script src="http://localhost:35729/livereload.js?snipver=1"></script>
+
+    <!-- routing and it's way too many dependencies -->
+    <script src="/bower_components/js-signals/dist/signals.min.js"></script>
+    <script src="/bower_components/hasher/dist/js/hasher.min.js"></script>
+    <script src="/bower_components/crossroads/dist/crossroads.min.js"></script>
+    <script src="/bower_components/d3/d3.min.js"></script>
+    <script src="/js/lib/customstorage/CustomStorage.js"></script>
+    <script src="/js/lib/jay.js"></script>
+    <!-- dependencies -->
+    <script src="/bower_components/vue/dist/vue.min.js"></script>
+    <script src="/bower_components/moment/min/moment.min.js"></script>
+    <script src="/bower_components/nedb/browser-version/out/nedb.min.js"></script>
+
+    <!-- app -->
+    <script src="/js/blog.js"></script>
+    <script src="/js/script.js"></script>
+
+  </body>
+</html>
