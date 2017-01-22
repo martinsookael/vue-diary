@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Minu päevik</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
 
   <body>
@@ -27,10 +27,15 @@
 
       <div id="frontPage" class="hidden">
         <br/><br />
-        <a v-for="post in posts" href="/#/post/{{ post._id }}">
+        <a v-for="post in posts" href="#/post/{{ post._id }}">
           {{ post.title }}
           <br /><br />
         </a>
+        <p v-if="posts.length === 0">
+          <br><br>
+          Selles päevikus ei ole veel ühtegi postitust.<br />
+          Vajuta "Uus postitus", et lisada esimene sissekanne
+        </p>
       </div>
 
       <div id="singlePost" class="hidden" v-bind:class="{ editable: !isEditing }">
@@ -64,20 +69,20 @@
     <script src="http://localhost:35729/livereload.js?snipver=1"></script>
 
     <!-- routing and it's way too many dependencies -->
-    <script src="/bower_components/js-signals/dist/signals.min.js"></script>
-    <script src="/bower_components/hasher/dist/js/hasher.min.js"></script>
-    <script src="/bower_components/crossroads/dist/crossroads.min.js"></script>
-    <script src="/bower_components/d3/d3.min.js"></script>
-    <script src="/js/lib/customstorage/CustomStorage.js"></script>
-    <script src="/js/lib/jay.js"></script>
+    <script src="bower_components/js-signals/dist/signals.min.js"></script>
+    <script src="bower_components/hasher/dist/js/hasher.min.js"></script>
+    <script src="bower_components/crossroads/dist/crossroads.min.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
+    <script src="js/lib/customstorage/CustomStorage.js"></script>
+    <script src="js/lib/jay.js"></script>
     <!-- dependencies -->
-    <script src="/bower_components/vue/dist/vue.min.js"></script>
-    <script src="/bower_components/moment/min/moment.min.js"></script>
-    <script src="/bower_components/nedb/browser-version/out/nedb.min.js"></script>
+    <script src="bower_components/vue/dist/vue.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/nedb/browser-version/out/nedb.min.js"></script>
 
     <!-- app -->
-    <script src="/js/blog.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/script.js"></script>
 
   </body>
 </html>

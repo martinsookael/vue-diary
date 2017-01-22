@@ -11,7 +11,7 @@
 
 // create / use existing Nedb database
 var db = new Nedb({
-  filename: 'posts6.jsonl',
+  filename: 'posts.jsonl',
   autoload: true
 })
 
